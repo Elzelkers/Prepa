@@ -1,0 +1,48 @@
+{
+  "name": "analyse-sujets",
+  "version": "1.0.0",
+  "description": "Application d'analyse des sujets de concours",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder build --mac --win --linux",
+    "build:mac": "electron-builder build --mac",
+    "build:win": "electron-builder build --win",
+    "build:linux": "electron-builder build --linux"
+  },
+  "build": {
+    "appId": "com.analyse.sujets",
+    "productName": "Analyse Sujets Concours",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "renderer.js",
+      "index.html"
+    ],
+    "extraResources": [
+      {
+        "from": "assets",
+        "to": "assets",
+        "filter": ["**/*.json"]
+      }
+    ],
+    "mac": {
+      "target": ["dmg"],
+      "category": "public.app-category.education"
+    },
+    "win": {
+      "target": ["nsis"]
+    },
+    "linux": {
+      "target": ["AppImage"]
+    },
+    "asar": true,
+    "compression": "maximum"
+  },
+  "devDependencies": {
+    "electron": "^34.2.0",
+    "electron-builder": "^24.13.3"
+  }
+}
